@@ -5,7 +5,6 @@
 package implementions
 
 import (
-	"fmt"
 	"github.com/baifei2014/jqueue/priority"
 	"math"
 )
@@ -21,7 +20,6 @@ func AStarSearch(graph Graph, start, goal Location, came_from map[Location]Locat
 	came_from[start] = start
 	cost_so_far[start] = 0
 
-	cycleTimes := 0
 	for !frontier.Empty() {
 		current, ok := frontier.Get().(Location)
 		if !ok {
@@ -31,8 +29,6 @@ func AStarSearch(graph Graph, start, goal Location, came_from map[Location]Locat
 		if current.equal(goal) {
 			break
 		}
-
-		cycleTimes++
 
 		for _, next := range graph.neighbors(current) {
 			new_cost := cost_so_far[current] + graph.cost(current, next)
@@ -44,5 +40,4 @@ func AStarSearch(graph Graph, start, goal Location, came_from map[Location]Locat
 			}
 		}
 	}
-	fmt.Printf("检索次数: %d\n", cycleTimes)
 }

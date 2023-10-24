@@ -6,8 +6,9 @@ package implementions
 
 import "graph/util"
 
+var DIRS = [4]Location{{1, 0}, {0, -1}, {0, 1}, {-1, 0}}
+
 type Graph struct {
-	dirs    [4]Location
 	width   int
 	height  int
 	walls   map[Location]bool
@@ -16,7 +17,6 @@ type Graph struct {
 
 func NewGraph(width, height int) Graph {
 	graph := Graph{
-		dirs:    [4]Location{{1, 0}, {0, -1}, {0, 1}, {-1, 0}},
 		width:   width,
 		height:  height,
 		walls:   map[Location]bool{},
@@ -40,7 +40,7 @@ func (g Graph) passable(id Location) bool {
 func (g Graph) neighbors(id Location) []Location {
 	var result []Location
 
-	for _, dir := range g.dirs {
+	for _, dir := range DIRS {
 		next := Location{
 			X: id.X + dir.X,
 			Y: id.Y + dir.Y,

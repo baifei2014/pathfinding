@@ -29,7 +29,7 @@ cost_so_far := map[implementions.Location]int{}
 - construct path
 
 ```go
-implementions.AStarSearch(graph, start, goal, came_from, cost_so_far)
+implementions.DijkstraSearch(graph, start, goal, came_from, cost_so_far)
 
 path := implementions.ReconstructPath(start, goal, came_from)
 ```
